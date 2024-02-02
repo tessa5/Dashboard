@@ -1,8 +1,11 @@
 import { Popover } from 'antd'
 import CustomAvator from '../custom-avatar'
+import { useGetIdentity } from '@refinedev/core'
+import type {User} from'@/graphql/schema.types'
 
 
 const CurrentUser = () => {
+  const { data: user } = useGetIdentity<User>()
   return (
     <>
         <Popover
@@ -11,7 +14,12 @@ const CurrentUser = () => {
             overlayInnerStyle={{padding:0}}
             overlayStyle={{zIndex:999}}
         >
-          <CustomAvator />
+          <CustomAvator 
+            name={user?.name}
+            src={user?.avatarUrl}
+            size='default'
+            style={{}}
+          />
             hola
         </Popover>
     </>

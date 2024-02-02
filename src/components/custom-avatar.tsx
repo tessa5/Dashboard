@@ -1,8 +1,22 @@
-import { Avatar as AntdAvator } from "antd"
+import { Avatar as AntdAvator, AvatarProps } from "antd"
 
-const CustomAvator = () => {
+type Props = AvatarProps & {
+  name?: string;
+}
+
+const CustomAvator = ({name, style, ...rest}: Props) => {
   return (
-    <AntdAvator>TS</AntdAvator>
+    <AntdAvator
+      alt={name}
+      size='small'
+      style={{
+        backgroundColor: '#526634',
+        display: 'flex',
+        alignItems: 'center',
+        ...style
+      }}
+      {...rest}
+    >{name}</AntdAvator>
   )
 }
 
